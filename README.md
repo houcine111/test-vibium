@@ -21,23 +21,31 @@ test-vibium/
 └── reports/                        # Rapports JSON + Allure (gitignoré)
 ```
 
-## Utilisation
+## Installation
 
 ```powershell
 # 1. Installer vibium (une fois)
 npm install -g vibium
 
-# 2. Cloner dans ton projet
+# 2. Installer Allure (optionnel, pour les rapports)
+#    Via npm (recommandé) :
+npx allure-commandline install
+#    Ou via winget :
+winget install Allure.Allure
+#    Ou via scoop :
+scoop install allure
+
+# 3. Cloner dans ton projet
 cd mon-projet
 git clone <url-du-repo-test-vibium> tests-e2e
 cd tests-e2e
 
-# 3. Configurer
+# 4. Configurer
 #    Édite config.json avec l'URL de ton app
 #    Copie tests/template.ps1 → tests/mon-app.ps1
 #    Ajoute tes propres étapes de test
 
-# 4. Lancer
+# 5. Lancer
 ./run.ps1
 ```
 
@@ -58,6 +66,13 @@ cd tests-e2e
 1. **`config.json`** → URL cible par défaut
 2. **`tests/mon-app.ps1`** → copie de `template.ps1`, ajoute tes `Test-Step`
 3. **`run.ps1 -headless -allure`** → CI-ready
+
+## Dépendances
+
+| Outil | Obligatoire | Installation |
+|-------|-------------|-------------|
+| **vibium** | Oui | `npm install -g vibium` |
+| **Allure** | Non (rapports) | `winget install Allure.Allure` ou `scoop install allure` ou `npx allure-commandline install` |
 
 ## Pourquoi ce template ?
 
