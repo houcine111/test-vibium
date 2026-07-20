@@ -12,7 +12,6 @@ test-vibium/
 ├── package.json                    # npm test, npm run report:open
 ├── config.json                     # URL + config de ton app
 ├── run.ps1                         # Lanceur unique (start → test → stop)
-├── prompt-run.ps1                  # Générateur : un prompt → un test
 ├── tests/
 │   └── template.ps1                # Squelette à copier pour chaque projet
 ├── examples/
@@ -60,30 +59,9 @@ cd tests-e2e
 | `./run.ps1 -headless` | Test sans UI (CI) |
 | `./run.ps1 -allure` | Test + rapport Allure |
 | `./run.ps1 -test tests/ma-app.ps1 -url https://site.com` | Cible personnalisée |
-| `./prompt-run.ps1` | Mode interactif (tape ce que tu veux tester) |
-| `./prompt-run.ps1 -prompt "va sur https://... et teste le login"` | Mode direct |
 | `npm test` | Mode headless |
 | `npm run test:headed` | Mode fenêtré |
 | `npm run report:open` | Générer + ouvrir Allure |
-
-## Générateur par prompt
-
-Tu décris ce que tu veux tester en langage naturel, le script explore la page et génère le test automatiquement.
-
-```powershell
-./prompt-run.ps1
-# > va sur https://demo.playwright.dev/todomvc, ajoute 3 todos et vérifie le compteur
-
-# Ou en une ligne :
-./prompt-run.ps1 -prompt "teste le formulaire de connexion sur https://example.com/login"
-```
-
-Ce qu'il fait :
-1. Extrait l'URL de ton prompt
-2. Navigue et explore la page avec `vibium map`
-3. Génère un script `tests/prompt-<timestamp>.ps1`
-4. Te propose de l'exécuter immédiatement
-5. Sauvegarde le script pour le rejouer plus tard
 
 ## Personnalisation
 
