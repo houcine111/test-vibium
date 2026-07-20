@@ -15,50 +15,38 @@ cd tests-e2e
 
 ## Utilisation avec opencode
 
-Ouvre opencode dans ce dossier et donne-lui une instruction comme :
+Ouvre opencode dans ce dossier et donne-lui une instruction. Exemple :
 
-> *"va sur https://demo.playwright.dev/todomvc, explore l'app, identifie tous les workflows, exécute des tests end-to-end, sauvegarde les screenshots dans screenshots/ et le rapport dans reports/report.json, puis génère le script de test dans tests/todomvc.ps1"*
+> *"va sur https://demo.playwright.dev/todomvc, explore l'app, exécute des tests e2e, sauvegarde les captures et le rapport, puis génère le script de test dans tests/todomvc.ps1"*
 
-**opencode va :**
-1. Charger le skill `vibe-check` → utiliser vibium
-2. Naviguer, explorer, exécuter les tests
-3. Sauvegarder les captures et le rapport
-4. Générer le script `tests/todomvc.ps1` réutilisable
+opencode va générer `tests/todomvc.ps1` avec l'URL directement dans le fichier.
 
-## Rejouer un script généré
-
-Une fois qu'opencode a créé un script, tu peux le relancer directement :
+## Rejouer un script
 
 ```powershell
-./run.ps1 -url https://demo.playwright.dev/todomvc -test tests/todomvc.ps1
+./run.ps1           # si un seul script dans tests/
+./run.ps1 -headless # ou en mode headless
 ```
 
-## Reporting avec Allure
+Si plusieurs scripts dans `tests/`, un menu te demandera lequel choisir.
 
-Installe Allure pour visualiser les rapports :
+## Reporting
 
-```powershell
-winget install Allure.Allure
-# ou : scoop install allure
-# ou : npx -y allure-commandline install
-```
+Deux rapports générés automatiquement après chaque test :
 
-Les tests génèrent directement des fichiers Allure dans `reports/allure-results/`. Pour visualiser :
-
-```powershell
-allure serve reports/allure-results/
-```
-
-Cela ouvre un navigateur avec l'historique des tests, les durées, les échecs et les captures d'écran.
+| Format | Emplacement | Visualisation |
+|--------|------------|---------------|
+| JSON | `reports/report.json` | Lecture directe |
+| Allure | `reports/allure-results/` | `allure serve reports/allure-results/` |
 
 ## Structure
 
 ```
-tests/                      # Scripts générés par opencode
+tests/                      # Scripts de test (générés par opencode)
 screenshots/                # Captures d'écran
 reports/
 ├── report.json             # Résultats lisibles
 └── allure-results/         # Résultats format Allure
-run.ps1                     # Pour rejouer un script existant
-tests/template.ps1          # Squelette (copie pour écrire un test manuellement)
+run.ps1                     # Lanceur
+tests/template.ps1          # Squelette à copier
 ```
