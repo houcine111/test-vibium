@@ -43,14 +43,10 @@ winget install Allure.Allure
 # ou : npx -y allure-commandline install
 ```
 
-Le rapport `reports/report.json` généré par les tests peut être converti en Allure avec cette commande :
+Les tests génèrent directement des fichiers Allure dans `reports/allure-results/`. Pour visualiser :
 
 ```powershell
-# Installer allure-commandline (une fois)
-npm install -g allure-commandline
-
-# Lancer le serveur de rapport directement depuis le JSON
-allure serve reports/
+allure serve reports/allure-results/
 ```
 
 Cela ouvre un navigateur avec l'historique des tests, les durées, les échecs et les captures d'écran.
@@ -58,9 +54,11 @@ Cela ouvre un navigateur avec l'historique des tests, les durées, les échecs e
 ## Structure
 
 ```
-tests/              # Scripts générés par opencode
-screenshots/        # Captures d'écran
-reports/report.json # Résultats des tests
-run.ps1             # Pour rejouer un script existant
-tests/template.ps1  # Squelette (copie pour écrire un test manuellement)
+tests/                      # Scripts générés par opencode
+screenshots/                # Captures d'écran
+reports/
+├── report.json             # Résultats lisibles
+└── allure-results/         # Résultats format Allure
+run.ps1                     # Pour rejouer un script existant
+tests/template.ps1          # Squelette (copie pour écrire un test manuellement)
 ```
