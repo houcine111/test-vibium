@@ -1,0 +1,15 @@
+# Screenshots
+screenshots/*.png
+!screenshots/.gitkeep
+
+# Reports
+reports/allure-report/
+reports/*.json
+!reports/.gitkeep
+
+# Node
+node_modules/
+
+# OS
+Thumbs.db
+.DS_Store

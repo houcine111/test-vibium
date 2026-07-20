@@ -1,0 +1,10 @@
+{
+  "name": "My App",
+  "url": "https://example.com",
+  "steps": [
+    { "type": "navigate", "name": "Page d'accueil" },
+    { "type": "screenshot", "name": "01-homepage" },
+    { "type": "text", "name": "Vérifier titre" },
+    { "type": "screenshot", "name": "02-final" }
+  ]
+}
