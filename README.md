@@ -13,6 +13,14 @@ git clone <url> tests-e2e
 cd tests-e2e
 ```
 
+## Installer Allure (optionnel)
+
+```powershell
+winget install Allure.Allure
+# ou : scoop install allure
+# ou : npx -y allure-commandline install
+```
+
 ## Utilisation avec opencode
 
 Ouvre opencode dans ce dossier et donne-lui une instruction. Exemple :
