@@ -13,8 +13,9 @@ test-vibium/
 ├── config.json                     # URL + config de ton app
 ├── run.ps1                         # Lanceur unique (start → test → stop)
 ├── tests/
-│   ├── template.ps1                # Template à copier pour un nouveau projet
-│   └── todomvc.ps1                 # Exemple concret (TodoMVC)
+│   └── template.ps1                # Squelette à copier pour chaque projet
+├── examples/
+│   └── todomvc.ps1                 # Exemple concret (TodoMVC, hors tests/)
 ├── scripts/
 │   └── allure-convert.ps1          # JSON → rapport Allure
 ├── screenshots/                    # Captures d'écran (gitignoré)
@@ -44,6 +45,7 @@ cd tests-e2e
 #    Édite config.json avec l'URL de ton app
 #    Copie tests/template.ps1 → tests/mon-app.ps1
 #    Ajoute tes propres étapes de test
+#    Voir examples/todomvc.ps1 pour un exemple complet
 
 # 5. Lancer
 ./run.ps1
