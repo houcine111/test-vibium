@@ -45,5 +45,4 @@ reports/                    # Résultats JSON + captures d'écran
 ├── smoke.json
 ├── e2e.json
 └── regression.json
-run.ps1                     # Lanceur PowerShell (legacy)
 ```
