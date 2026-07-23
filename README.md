@@ -1,60 +1,49 @@
 # test-vibium
 
-Template de tests QA avec vibium + opencode.
+Template de tests QA avec Vibium + opencode.
 
-## Dépendances
+## Prérequis
 
-- **vibium** — `npm install -g vibium`
+- **Node.js 20+**
+- **Vibium** (CLI) — `npm install -g vibium`
 
 ## Installation
 
 ```powershell
 git clone <url> tests-e2e
 cd tests-e2e
+npm install
 ```
 
-## Installer Allure (optionnel)
+## Exécution
 
 ```powershell
-winget install Allure.Allure
-# ou : scoop install allure
-# ou : npx -y allure-commandline install
+npm run smoke       # Smoke tests
+npm run e2e         # Parcours complet E2E
+npm run regression  # Tests de régression
 ```
 
-## Utilisation avec opencode
-
-Ouvre opencode dans ce dossier et donne-lui une instruction. Exemple :
-
-> *"va sur https://demo.playwright.dev/todomvc, explore l'app, exécute des tests e2e, sauvegarde les captures et le rapport, puis génère le script de test dans tests/todomvc.ps1"*
-
-opencode va générer `tests/todomvc.ps1` avec l'URL directement dans le fichier.
-
-## Rejouer un script
+## Avec opencode
 
 ```powershell
-./run.ps1           # si un seul script dans tests/
-./run.ps1 -headless # ou en mode headless
+cd tests-e2e
+opencode
 ```
-
-Si plusieurs scripts dans `tests/`, un menu te demandera lequel choisir.
-
-## Reporting
-
-Deux rapports générés automatiquement après chaque test :
-
-| Format | Emplacement | Visualisation |
-|--------|------------|---------------|
-| JSON | `reports/report.json` | Lecture directe |
-| Allure | `reports/allure-results/` | `allure serve reports/allure-results/` |
 
 ## Structure
 
 ```
-tests/                      # Scripts de test (générés par opencode)
-screenshots/                # Captures d'écran
-reports/
-├── report.json             # Résultats lisibles
-└── allure-results/         # Résultats format Allure
-run.ps1                     # Lanceur
-tests/template.ps1          # Squelette à copier
+tests/                      # Scripts de test TypeScript
+├── lib.ts                  # Helper (TestReport, initRun)
+├── smoke.ts
+├── e2e.ts
+├── regression.ts
+└── template.ts             # Squelette à copier
+features/                   # Documentation Gherkin
+reports/                    # Résultats JSON + captures d'écran
+├── screenshots/
+├── smoke.json
+├── e2e.json
+└── regression.json
+run.ps1                     # Lanceur PowerShell (legacy)
 ```

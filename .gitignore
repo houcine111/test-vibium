@@ -4,6 +4,7 @@ screenshots/*.png
 
 # Reports
 reports/allure-report/
+reports/screenshots/
 reports/*.json
 !reports/.gitkeep
 
@@ -13,3 +14,9 @@ node_modules/
 # OS
 Thumbs.db
 .DS_Store
+
+tests/*
+!tests/template.*
+
+features/*
+!features/template.feature
