@@ -18,9 +18,8 @@ npm install
 ## Exécution
 
 ```powershell
-npm run smoke       # Smoke tests
-npm run e2e         # Parcours complet E2E
-npm run regression  # Tests de régression
+npm run example       # Syou can run the test in the tests folder 
+
 ```
 
 ## Avec opencode
